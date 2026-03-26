@@ -11,21 +11,9 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "libft.h"
 #include <sys/types.h>
 #include <stdlib.h>
-
-char	*ft_strchr(const char *s, int c)
-{
-	while (*s)
-	{
-		if ((unsigned char)*s == (char)c)
-			return ((char *)s);
-		s++;
-	}
-	if ((unsigned char)*s == (char)c)
-		return ((char *)s);
-	return (NULL);
-}
 
 void	copy_n(char *dest, char *src, size_t n)
 {
@@ -37,16 +25,6 @@ void	copy_n(char *dest, char *src, size_t n)
 		dest[i] = src[i];
 		i++;
 	}
-}
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (*s++)
-		i++;
-	return (i);
 }
 
 int	init(char **output, char **store_fd, char **buf, int fd)
