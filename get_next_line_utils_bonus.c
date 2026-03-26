@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
-#include <stddef.h>
+#include <stdlib.h>
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -71,8 +71,13 @@ int	init(char **output, char **store_fd, char **buf, int fd)
 	return (1);
 }
 
-char	*return_and_free_buf(char *buf, char *output)
+char	*return_and_free_buf(char *buf, char *output, char **store_fd)
 {
+	if (store_fd && *store_fd)
+	{
+		free(*store_fd);
+		*store_fd = NULL;
+	}
 	free(buf);
 	return (output);
 }

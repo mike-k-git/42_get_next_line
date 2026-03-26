@@ -24,7 +24,7 @@ size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 int		init(char **o, char **s, char **b, int fd);
 void	copy_n(char *dest, char *src, size_t n);
-char	*return_and_free_buf(char *buf, char *output);
+char	*return_and_free_buf(char *buf, char *output, char **store_id);
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42

@@ -113,11 +113,11 @@ char	*get_next_line(int fd)
 	{
 		split_and_return(&store[fd], &output);
 		if (output && *output)
-			return (return_and_free_buf(buf, output));
+			return (return_and_free_buf(buf, output, &store[fd]));
 		status = read_into_buffer(fd, &buf, &store[fd], &output);
 		if (status == 0)
-			return (return_and_free_buf(buf, output));
+			return (return_and_free_buf(buf, output, &store[fd]));
 		if (status == -1)
-			return (return_and_free_buf(buf, NULL));
+			return (return_and_free_buf(buf, NULL, &store[fd]));
 	}
 }
