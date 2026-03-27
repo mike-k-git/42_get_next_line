@@ -28,6 +28,8 @@ This project implements the `get_next_line` function in C, which reads a line fr
    ```
    - `fd` is the file descriptor to read from.
    - The function returns the next line read, or `NULL` on EOF or error.
+3. Stop before the end of a file
+   Call `gnl_clear(fd)` to clear any leftover data.
 
 ## Notes
 - The buffer size can be changed by defining `BUFFER_SIZE` during compilation:

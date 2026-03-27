@@ -101,9 +101,10 @@ int	read_into_buffer(int fd, char **buf, char **store_fd, char **output)
 	return (1);
 }
 
+static char	*store[FD_MAX];
+
 char	*get_next_line(int fd)
 {
-	static char		*store[FD_MAX];
 	char			*output;
 	char			*buf;
 	int				status;
@@ -114,11 +115,18 @@ char	*get_next_line(int fd)
 	{
 		split_and_return(&store[fd], &output);
 		if (output && *output)
-			return (return_and_free_buf(buf, output, &store[fd]));
+			return (return_and_free_buf(buf, output));
 		status = read_into_buffer(fd, &buf, &store[fd], &output);
 		if (status == 0)
-			return (return_and_free_buf(buf, output, &store[fd]));
+			return (return_and_free_buf(buf, output));
 		if (status == -1)
-			return (return_and_free_buf(buf, NULL, &store[fd]));
+			return (return_and_free_buf(buf, NULL));
 	}
+}
+
+void  gnl_clear(int fd) {
+  if (store[fd]) {
+    free(store[fd]);
+    store[fd] = NULL;
+  }
 }

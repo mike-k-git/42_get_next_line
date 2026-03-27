@@ -24,10 +24,11 @@ size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 int		init(char **o, char **s, char **b, int fd);
 void	copy_n(char *dest, char *src, size_t n);
-char	*return_and_free_buf(char *buf, char *output, char **store_id);
+char	*return_and_free_buf(char *buf, char *output);
+void  gnl_clear(int fd);
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 4096
 # endif
 
 # define FD_MAX 1024

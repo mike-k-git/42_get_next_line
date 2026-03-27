@@ -50,13 +50,8 @@ int	init(char **output, char **store_fd, char **buf, int fd)
 	return (1);
 }
 
-char	*return_and_free_buf(char *buf, char *output, char **store_fd)
+char	*return_and_free_buf(char *buf, char *output)
 {
-	if (store_fd && *store_fd)
-	{
-		free(*store_fd);
-		*store_fd = NULL;
-	}
 	free(buf);
 	return (output);
 }
